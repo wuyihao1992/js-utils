@@ -1,11 +1,6 @@
 /**
  * 兼容性本地化存储方案封装
  * @param defaultStorageType 缓存类型，{1: sessionStorage , 2: localStorage }, 默认为1
- * 调用:
- * new LocalData(1).set('key', 123)
- * new LocalData(1).get('key')
- * new LocalData(1).remove('key')
- * localData.get('key')
  */
 export function LocalData(defaultStorageType = 1) {
     this.hostName = location.hostname ? location.hostname : 'localStatus';
@@ -176,7 +171,7 @@ function removeStorage(key, storageType) {
 }
 
 /**
- * Attention!!!! localData.get() 方法注意 return
+ * @Attention localData.get() 方法注意 return
  * @type {LocalData}
  */
 export const localData = new LocalData();
