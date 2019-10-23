@@ -63,3 +63,25 @@ export function deleteTreeNodeById(data, id) {
 
     return deleteNode(data, id);
 }
+
+/**
+ * 将树节点列表转成无序的扁平化数组
+ * @param nodeList
+ */
+export function transformNodeListToArray(nodeList = []) {
+    let arr = [];
+
+    const formatList = (list) => {
+        list.forEach(col => {
+            if (col.children && col.children.length > 0) {
+                formatList(col.children);
+            } else {
+                arr.push(col);
+            }
+        });
+    };
+
+    formatList(nodeList);
+
+    return arr;
+}
