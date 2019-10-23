@@ -7,8 +7,8 @@
  * new LocalData(1).remove('key')
  * localData.get('key')
  */
-function LocalData(defaultStorageType = 1) {
-    this.hostname = location.hostname ? location.hostname : 'localStatus';
+export function LocalData(defaultStorageType = 1) {
+    this.hostName = location.hostname ? location.hostname : 'localStatus';
 
     // 用于判断sessionStorage是否可用
     this.isLocalStorage = !!window.sessionStorage;
@@ -179,4 +179,4 @@ function removeStorage(key, storageType) {
  * Attention!!!! localData.get() 方法注意 return
  * @type {LocalData}
  */
-var localData = new LocalData();
+export const localData = new LocalData();
