@@ -25,6 +25,19 @@ export function hasOverflowX(el) {
 }
 
 /**
+ * 判断内容有无超出高度
+ * @param el
+ * @return {boolean}
+ */
+export function hasOverflowY(el) {
+    if (!el) {
+        return false;
+    }
+
+    return el.scrollHeight > el.clientHeight || el.offsetHeight > el.clientHeight;
+}
+
+/**
  * 计算最大左右滚动距离
  * @param el
  */
