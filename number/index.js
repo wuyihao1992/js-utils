@@ -46,3 +46,10 @@ export function toDecimal(x) {
 
     return f;
 }
+
+/**
+ * 提取字符串中的数字
+ */
+export function parseIntPlugs(str) {
+    return str.replace(/[^0-9]/ig, '');
+}
