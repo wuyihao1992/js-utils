@@ -53,3 +53,17 @@ export function toDecimal(x) {
 export function parseIntPlugs(str) {
     return str.replace(/[^0-9]/ig, '');
 }
+
+/**
+ * 隐藏部分手机号码
+ *
+ * @param number
+ * @return {string|*}
+ */
+export function formatPhoneNumber(number) {
+    if (!number) {
+        return '';
+    }
+
+    return number.replace(/(\d{3})(\d{4})(\d{4})/, "$1****$3");
+}
