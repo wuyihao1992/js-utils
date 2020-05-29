@@ -67,3 +67,24 @@ export function formatPhoneNumber(number) {
 
     return number.replace(/(\d{3})(\d{4})(\d{4})/, "$1****$3");
 }
+
+/**
+ * 将字符串转换为数字
+ *
+ * @param str 字符串
+ * @return {number}
+ */
+export function stringToNumber(str) {
+    if (str) {
+        const reg = /\.[0-9]+|(?:[1-9]+[0-9]*|0)(?:\.[0-9]*|\.)?(?:[eE][+-]{0,1}[0-9]+)?(?![_$a-zA-Z0-9])/;
+        const num = str.match(reg);
+
+        if (num !== null) {
+            return num[0] - 0;
+        } else {
+            return NaN;
+        }
+    } else {
+        return NaN;
+    }
+}
