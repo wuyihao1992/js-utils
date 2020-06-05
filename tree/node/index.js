@@ -85,3 +85,41 @@ export function transformNodeListToArray(nodeList = []) {
 
     return arr;
 }
+
+/**
+ * 将有父子关系的平行数组转换成树形数据
+ *
+ * @param list {array} 平行数组数据
+ * @param idKey {string} 树节点ID字段
+ * @param pIdKey {string} 父节点ID字段
+ * @return {Array}
+ */
+export function transformArrayToTree(list = [], idKey = 'id', pIdKey = 'parentId') {
+    if (!Array.isArray(list) || list.length <= 0) {
+        return [];
+    }
+
+    const data = [...list];
+    const result = [];
+
+    data.forEach(item => {
+        delete item.children;
+    });
+
+    const map = {};
+    data.forEach(item => {
+        map[item[idKey]] = item;
+    });
+
+    data.forEach(item => {
+        const parent = map[item[pIdKey]];
+
+        if (parent) {
+            (parent.children || (parent.children = [])).push(item);
+        } else {
+            result.push(item);
+        }
+    });
+
+    return result;
+}
