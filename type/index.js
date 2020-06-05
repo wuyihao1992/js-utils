@@ -1,1 +1,1 @@
-export {object2String} from './object2String'
+export {object2String, proToType} from './util'
