@@ -53,3 +53,32 @@ export function computeMaxScrollLeft(el) {
 
     return maxLeft;
 }
+
+/**
+ * 判断滚动元素是否滚动到底部
+ * (clientHeight + scrollTop) >= scrollHeight 则滚动到底部
+ *
+ * @param el 滚动元素
+ * @param spacing 距离底部的距离多少则认为是已经滚动到底部，预加载时使用，优化体验
+ * @return {boolean}
+ */
+export function checkScrollBottom(el, spacing = 0) {
+    if (!el) {
+        return false;
+    }
+
+    // 元素总高度
+    const scrollHeight = el.scrollHeight;
+    // 可视区域高度
+    const clientHeight = el.clientHeight || document.body.clientHeight || document.documentElement.clientHeight || 0;
+    // 滚动距离
+    const scrollTop = el.scrollTop;
+
+    // showToast(`scrollHeight: ${scrollHeight}--clientHeight: ${clientHeight}--scrollTop: ${scrollTop}`);
+
+    if (scrollHeight - (clientHeight + scrollTop) <= spacing) {
+        return true;
+    } else {
+        return false;
+    }
+}
